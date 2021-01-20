@@ -1,0 +1,21 @@
+###
+GET http://localhost:3000/API-EDN/Moment/List?size=4&page=0
+
+###
+GET http://localhost:3000/API-EDN/Moment/List/5fd9Beed08bec52f00a9323f
+
+###
+POST http://localhost:3000/API-EDN/Moment/Add
+Content-Type: application/json
+
+{
+    "title": "EDN 1223412 MOMENTO",
+    "cap_name": "LOS mejores MOMENTOS",
+    "cap_num": "123",
+    "min_start": "10",
+    "min_end": "230",
+    "tags": "#RISA,#JAJA"
+}
+
+###
+DELETE  http://localhost:3000/API-EDN/Moment/Delete/5fd9ada0e4434d2680ec7fe7 
