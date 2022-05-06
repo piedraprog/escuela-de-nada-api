@@ -4,3 +4,5 @@ node_modules
 # ENVIRONMENT VARIABLES
 .env
 dist
+
+.vscode
