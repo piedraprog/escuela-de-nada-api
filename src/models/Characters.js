@@ -2,7 +2,6 @@ import {Schema, model} from 'mongoose';
 
 
 const Character =  new Schema({
-
     Name:{
         type:String,
         required:true,
@@ -12,12 +11,11 @@ const Character =  new Schema({
         type:String,
         required:true,
         trim:true    },
-    EpCreation:{
+    EpisodeAparition:{
         type:Number,
         required:true,
         trim:true
     }
-
 })
 
 export default model('Character',Character);

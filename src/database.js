@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
-import config from './config';
+import config from '@config';
+import { logger } from '@logger';
+
+const env = "database.js";
 
 (async() => {
     try {
@@ -8,10 +11,9 @@ import config from './config';
             useUnifiedTopology: true,
             useFindAndModify: false
         })
-    
-        console.log('database is connect to:',db.connection.name);
+        logger.info({message:`database is connect to: ${db.connection.name}`, file: env});
     } catch (error) {
-        console.log(error);
+        logger.error(error);
     }
     
 })();

@@ -1,5 +1,7 @@
-import Bestmoments from "../models/Bestmoments";
-import { getPagination } from "../libs/getPagination";
+import Bestmoments from "@models/Bestmoments";
+import { getPagination } from "@libs/getPagination";
+
+
 //LIST
 export const ListAllMoment = async (req, res) => {
   try {

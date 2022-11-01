@@ -21,9 +21,6 @@ router.post('/Moment/Add',momentctrl.PostMoment);
 //DELETE A MOMENT 
 router.delete('/Moment/Delete/:id', momentctrl.DeleteMoment);
 
-
-
-
 // CHARACTERS / CHARACTERS / CHARACTERS / CHARACTERS / CHARACTERS / CHARACTERS / CHARACTERS 
 
 //LIST CHARACTERS 
