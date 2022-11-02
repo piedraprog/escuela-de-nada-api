@@ -29,6 +29,7 @@
     "@babel/node": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
+    "eslint": "^8.26.0",
     "nodemon": "^2.0.6"
   },
   "_moduleAliases": {
@@ -39,6 +40,7 @@
     "@controllers": "src/controllers",
     "@middleware": "src/middleware",
     "@models": "src/models",
-    "@config": "src/config.js"
+    "@config": "src/config.js",
+    "@morgan": "src/middleware/morgan.middleware.js"
   }
 }

@@ -1,20 +1,24 @@
-import config from "@config";
 import jwt from 'jsonwebtoken';
+import config from '@config';
 
 
-export const TokenValidation = async (req, res, next) =>{
+export const tokenValidation = async (req, res, next) => {
 
-    const token = req.headers['token'];
-    
-    if(!token){
-        return res.status(401).json({message:'acceso denegado'});
-    }else{
-        jwt.verify(token,config.key,(err,decoded) =>{
-            if(err){
-                return res.status(401).json({message:'acceso denegado', err});
-            }else{
-                next();
-            }
-        })
-    }
-}
+	const token = req.body.key;
+	
+	
+	if(!token){
+		return res.status(401).json({message:'acceso denegado'});
+	}else{
+		jwt.verify(token, config.jwtKey, ( err, decode) => {
+			if(err){
+				return res.status(401).json({message:'acceso denegado', err});
+			}
+
+			console.log(decode);
+			return 0;
+			// next();
+			// if()
+		});
+	}
+};

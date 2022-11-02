@@ -1,4 +1,4 @@
-import Character from '@models/Characters';
+import character from '@models/characters';
 
 
 export const ListCharacters = async(req,res) =>{

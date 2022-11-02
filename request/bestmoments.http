@@ -9,13 +9,22 @@ POST http://localhost:3000/API-EDN/Moment/Add
 Content-Type: application/json
 
 {
-    "title": "EDN 1223412 MOMENTO",
-    "cap_name": "LOS mejores MOMENTOS",
-    "cap_num": "123",
-    "min_start": "10",
-    "min_end": "230",
-    "tags": "#RISA,#JAJA"
+    "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9zZVBpZWRyYSIsImlhdCI6MTY2NzM0MzU2MiwiZXhwIjoxNjk4ODc5NTYyfQ.9XNEe74cQwRsYQPfj7cQCC5mi0l0B-Cv-IQx7HsWsPk",
+    "data": {
+        "title": "12333341 MOMENTO",
+        "cap_name": "LOS mejores MOMENTOS",
+        "cap_num": "123",
+        "min_start": "10",
+        "min_end": "230",
+        "tags": "#RISA,#JAJA"
+    }
 }
 
 ###
-DELETE  http://localhost:3000/API-EDN/Moment/Delete/5fd9ada0e4434d2680ec7fe7 
+POST http://localhost:3000/API-EDN/admin/register
+Content-Type: application/json
+
+{
+    "name":"juanPerez",
+    "jwt":"1yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9zZVBpZWRyYSIsImlhdCI6MTY2NzM0MzU2MiwiZXhwIjoxNjk4ODc5NTYyfQ.9XNEe74cQwRsYQPfj7cQCC5mi0l0B-Cv-IQx7HsWsPk"
+}

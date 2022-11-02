@@ -4,4 +4,4 @@ import'./database';
 
 
 app.listen(app.get('port'));
-logger.warn(new Error(`server on port, ${app.get('port')}`)); 
+logger.info({message:`server on port, ${app.get('port')}`, file: 'index.js'}); 

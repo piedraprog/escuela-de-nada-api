@@ -1,14 +1,14 @@
-import { buildDevLog } from './dev.logger'
-import { buildProdLogger } from './prod.logger' 
+import { buildDevLog } from './dev.logger';
+import { buildProdLogger } from './prod.logger'; 
 
 import config from '@config';
 
 let newLogger;
 
 if (config.env === 'dev') {
-    newLogger = buildDevLog;
+	newLogger = buildDevLog;
 } else {
-    newLogger = buildProdLogger;
+	newLogger = buildProdLogger;
 }
 
 
