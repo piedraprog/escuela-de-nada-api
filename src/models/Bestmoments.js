@@ -6,7 +6,6 @@ const bestMoments = new Schema({
 	title: {
 		type: String, 
 		required: true,
-		trim: true
 	},
 	capName:{
 		type: String, 

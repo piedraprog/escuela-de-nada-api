@@ -1,18 +1,18 @@
 import {Router} from 'express';
-import * as momentctrl from '../controllers/moments.controller';
+import { listAllMoment, listByKey, postMoment, deleteByUser } from '@controllers/moments.controller';
 // import * as characterctrl from '../controllers/character.controller';
 import { tokenValidation } from '@middleware/jwtValidation';
 
+
 const momentRouter = Router();
 
-
-momentRouter.get('/Moment/List', momentctrl.ListAllMoment);
-momentRouter.get('/Moment/List/:id',momentctrl.ListOneMoment);
-
-
-momentRouter.post('/Moment/Add', tokenValidation, momentctrl.PostMoment);
+momentRouter.get('/list', listAllMoment);
+momentRouter.get('/listby', listByKey);
 
 
-momentRouter.delete('/Moment/Delete/:id', momentctrl.DeleteMoment);
+momentRouter.post('/add', tokenValidation, postMoment);
+
+
+momentRouter.delete('/deletebyuser',tokenValidation, deleteByUser );
 
 export default momentRouter;

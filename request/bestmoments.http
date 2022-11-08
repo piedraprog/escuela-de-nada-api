@@ -1,22 +1,24 @@
 ###
-GET http://localhost:3000/API-EDN/Moment/List?size=4&page=0
+GET http://localhost:3000/api/moments/List?size=10&page=0
 
 ###
-GET http://localhost:3000/API-EDN/Moment/List/5fd9Beed08bec52f00a9323f
+GET http://localhost:3000/api/moments/List
+Content-Type: 
 
 ###
-POST http://localhost:3000/API-EDN/Moment/Add
+POST http://localhost:3000/api/moments/Add
 Content-Type: application/json
 
 {
-    "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9zZVBpZWRyYSIsImlhdCI6MTY2NzM0MzU2MiwiZXhwIjoxNjk4ODc5NTYyfQ.9XNEe74cQwRsYQPfj7cQCC5mi0l0B-Cv-IQx7HsWsPk",
+    "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9zZXBpZWRyYSIsImlhdCI6MTY2NzQxNTI5OSwiZXhwIjoxNjk4OTUxMjk5fQ.G00bJ4tA8MIV631djT78mta8qEXBt2n00mrvEozQDFM",
     "data": {
-        "title": "12333341 MOMENTO",
-        "cap_name": "LOS mejores MOMENTOS",
-        "cap_num": "123",
-        "min_start": "10",
-        "min_end": "230",
-        "tags": "#RISA,#JAJA"
+        "title": " la infancia mexicana feat. Franco Escamilla",
+        "capName": "¿Cómo era la normalidad hace 50 años? ",
+        "capNum": "100",
+        "minStart": "400",
+        "minEnd": "450",
+        "tags": "#RISA,#JAJA,#AHORAFIJATE",
+        "postedBy": "pedro"
     }
 }
 
@@ -26,5 +28,5 @@ Content-Type: application/json
 
 {
     "name":"juanPerez",
-    "jwt":"1yJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9zZVBpZWRyYSIsImlhdCI6MTY2NzM0MzU2MiwiZXhwIjoxNjk4ODc5NTYyfQ.9XNEe74cQwRsYQPfj7cQCC5mi0l0B-Cv-IQx7HsWsPk"
+    "jwt":"ayJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiam9zZVBpZWRyYSIsImlhdCI6MTY2NzM0MzU2MiwiZXhwIjoxNjk4ODc5NTYyfQ.9XNEe74cQwRsYQPfj7cQCC5mi0l0B-Cv-IQx7HsWsPk"
 }

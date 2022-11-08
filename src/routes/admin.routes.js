@@ -4,7 +4,7 @@ import { createAdmin  } from '@controllers/auth.controller';
 
 const adminRouter = Router();
 
-adminRouter.post('/admin/register', createAdmin);
+adminRouter.post('/register', createAdmin);
 
 
 export default adminRouter;

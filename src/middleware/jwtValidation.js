@@ -1,24 +1,35 @@
 import jwt from 'jsonwebtoken';
 import config from '@config';
+import { verifyAdmin } from '@controllers/auth.controller';
+import { infomsg } from '@libs/messages';
 
-
-export const tokenValidation = async (req, res, next) => {
+export const tokenValidation = (req, res, next) => {
 
 	const token = req.body.key;
-	
-	
 	if(!token){
-		return res.status(401).json({message:'acceso denegado'});
+		return res.status(401).json({
+			message: infomsg.tokenNotFound
+		});
+
 	}else{
-		jwt.verify(token, config.jwtKey, ( err, decode) => {
+		jwt.verify(token, config.jwtKey, async (err, decode) => {
 			if(err){
-				return res.status(401).json({message:'acceso denegado', err});
+				
+				return res.status(401).json({
+					message: infomsg.accessDenied,
+					error: err
+				});
 			}
 
-			console.log(decode);
-			return 0;
-			// next();
-			// if()
+			if(await verifyAdmin(decode.name)) {
+				req.body = req.body.data;
+				next();
+			} else {
+				return res.status(401).json({
+					message: infomsg.accessDenied
+				});
+			}
+
 		});
 	}
 };

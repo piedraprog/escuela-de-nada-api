@@ -10,7 +10,7 @@ const env = 'database.js';
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
 			useFindAndModify: false,
-			useCreateIndex: false
+			useCreateIndex: true
 		});
 		logger.info({message:`database is connect to: ${db.connection.name}`, file: env});
 	} catch (error) {

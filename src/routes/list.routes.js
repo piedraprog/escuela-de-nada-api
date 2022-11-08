@@ -5,8 +5,8 @@ import characterRouter from './character.routes';
 
 const router = Router();
 
-router.use(momentRouter);
-router.use(characterRouter);
-router.use(adminRouter);
+router.use('/moments',momentRouter);
+router.use('/characters',characterRouter);
+router.use('/admin',adminRouter);
 
 export default router;

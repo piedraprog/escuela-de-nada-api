@@ -1,9 +1,9 @@
 import adminUser from '@models/admin';
+import { logger } from '@logger';
 
 
 export const createAdmin = async(req, res) => {
 
-	// console.log(req.body);
 	if (!req.body.name) {
 		return res.status(400).send({ message: 'Content cannot be empty'});
 	}
@@ -17,9 +17,9 @@ export const createAdmin = async(req, res) => {
 		});
 
 		const adminSaved = await newAdmin.save();
-		// console.log()
 		res.json(adminSaved);
 	} catch (error) {
+		logger.warn(error);
 		res.status(500).json({
 			message: error.message || 'something goes wrong',
 		});
@@ -27,11 +27,12 @@ export const createAdmin = async(req, res) => {
 };
 
 
-export const verifyAdmin = (id) => {
-	adminUser.findOne({name: id}, (err, adminUser) => {
-		if(err) return false;
-		if(adminUser) return true;
-	});
+export const verifyAdmin = async(id) => {
+
+	const exist = await adminUser.findOne({name: id},'name');
+	if(!exist) return false;
+	return true;
+
 };
 
 export const deleteAdmin = async(req, res) => {

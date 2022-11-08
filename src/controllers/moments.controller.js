@@ -1,88 +1,145 @@
 import bestMoments from '@models/bestMoments';
 import { getPagination } from '@libs/getPagination';
+import { infomsg } from '@libs/messages';
 
 
 //LIST
-export const ListAllMoment = async (req, res) => {
+export const listAllMoment = async (req, res) => {
 	try {
-		const { size, page, title } = req.query;
+		const { size, page } = req.query;
 		const { limit, offset } = getPagination(size, page);
 		
-		const condition = title ? {
-			title: {$regex : new RegExp(title), $options:"i"},
-		}: {};
+		const ShowMoments = await bestMoments.paginate({}, { offset, limit });
 
-		
-		const ShowMoments = await bestMoments.paginate(condition, { offset, limit });
-
-		res.json({
-			totalItems: ShowMoments.totalDocs,
-			Moments: ShowMoments.docs,
-			totalPages: ShowMoments.totalPages,
-			currentPage: ShowMoments.page - 1
+		res.status(200).json({
+			info: {
+				totalItems: ShowMoments.totalDocs,
+				totalPages: ShowMoments.totalPages,
+				currentPage: ShowMoments.page - 1,
+				// nextPage: 'coming soon',
+				// prevPage: 'coming soon'
+			},
+			results: ShowMoments.docs
 		});
 
 	} catch (error) {
 		res.status(500).json({
-			message: error.message || 'something goes wrong',
+			message: error.message || infomsg.errorFetchingMomentList,
 		});
 	}
 };
 
-export const ListOneMoment = async (req, res) => {
-	const { id } = req.params;
+
+export const listByKey = async (req, res) => {
+
 	try {
-		const TheMoment = await bestMoments.findById(id);
+		let { size, page, key, param } = req.body;
+		const { limit, offset } = getPagination(size, page);
+		let condition;
 
-		if (!TheMoment)
-			return res.status(404).json({
-				message: `Moment id ${id} does not exist`,
-			});
+		if(!key) return  res.status(400).send({error: infomsg.contentEmpty});
 
-		res.json(TheMoment);
+		switch (key) {
+		case 'capNum':
+			condition = {capNum: param,};
+			break;
+		case 'postedBy':
+			condition = {postedBy: {$regex : new RegExp(param), $options:'i'},};
+			break;		
+		default:
+			return res.status(400).send({error: infomsg.errorInvalidKey});
+		}
+
+		const ShowMoments = await bestMoments.paginate(condition, { offset, limit });
+		
+		
+		res.status(200).json({
+			info: {
+				totalItems: ShowMoments.totalDocs,
+				totalPages: ShowMoments.totalPages,
+				currentPage: ShowMoments.page - 1
+			},
+			results: ShowMoments.docs,
+		});
+
 	} catch (error) {
 		res.status(500).json({
-			message: error.message || 'something goes wrong',
+			message: error.message || infomsg.errorFetchingMomentList,
 		});
 	}
 };
+
 
 //INSERT
-export const PostMoment = async (req, res) => {
-	if (!req.body.title) {
-		return res.status(400).send({ message: 'Content cannot be empty'});
-	}
+export const postMoment = async (req, res) => {
+	
+	if (!req.body?.title) return res.status(400).send({ message: infomsg.contentEmpty});
 
+	const { title, capName, capNum, minStart, minEnd, tags, postedBy } = req.body;
+	
 	try {
 		const newbestMoments = new bestMoments({
-			title: req.body.title,
-			capName: req.body.cap_name,
-			capNum: req.body.cap_num,
-			minStart: req.body.min_start,
-			minEnd: req.body.min_end,
-			tags: req.body.tags,
-			postedBy:'jose'
+			title:  title,
+			capName:  capName,
+			capNum:  capNum,
+			minStart:  minStart,
+			minEnd:  minEnd,
+			tags:  tags,
+			postedBy: postedBy
 		});
-		const MomentSave = await newbestMoments.save();
-		res.json(MomentSave);
+
+		const momentSaved = await newbestMoments.save();
+		res.json({
+			info: infomsg.successRegistering,
+			result: { 
+				title: momentSaved.title,
+				capName: momentSaved.capName,
+				capNum: momentSaved.capNum,
+				minStart: momentSaved.minStart,
+				minEnd: momentSaved.minEnd,
+				tags: momentSaved.tags,
+				postedBy: momentSaved.postedBy
+			}
+		});
 	} catch (error) {
 		res.status(500).json({
-			message: error.message || 'something goes wrong',
+			message: infomsg.errorPostingMoment,
+			error: error.message 
 		});
 	}
 };
 
-
-//DELETE
-export const DeleteMoment = async (req, res) => {
+// DELETE
+export const deleteByUser = async (req, res) => {
 	try {
-		await bestMoments.findByIdAndDelete(req.params.id);
-		res.json({
-			message: 'Moment Delete Successfully',
+
+
+		if(!req.body?.username) return res.status(400).json({
+			error: infomsg.contentEmpty
 		});
+		
+		const { username } = req.body;
+		const exist = await bestMoments.findOne({postedBy: username});
+
+		if(!exist) return res.status(404).json({
+			error: infomsg.userNotFound
+		});
+
+
+		const result = await bestMoments.deleteMany({ postedBy: username});
+		res.status(200).json({
+			info: {
+				opResult: infomsg.successDeleting,
+				itemsDeleted: result.deletedCount
+			}
+		});
+
 	} catch (error) {
+
 		res.status(500).json({
-			message: error.message || 'something goes wrong',
+			message: infomsg.errorDeleting,
+			error: error.message ,
 		});
+
 	}
 };

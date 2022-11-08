@@ -2,13 +2,13 @@ import character from '@models/characters';
 
 
 export const ListCharacters = async(req,res) =>{
-    // const FindCharacter = await Character.find();
-    // res.send(FindCharacter);
+	// const FindCharacter = await Character.find();
+	// res.send(FindCharacter);
 
-    res.send('entonces');
+	res.send('entonces');
 };
 
 export const PostCharacters = async(req,res) =>{
 
-    res.send('Personaje creado con éxito');
+	res.send('Personaje creado con éxito');
 };

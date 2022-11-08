@@ -27,6 +27,6 @@ app.get('/', (req, res) => {
 });
 
 //FUNCTIONAL ROUTES
-app.use('/API-EDN', ListRoutes);
+app.use('/api', ListRoutes);
 
 export default app;
