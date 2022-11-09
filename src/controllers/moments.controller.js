@@ -103,7 +103,7 @@ export const postMoment = async (req, res) => {
 		});
 	} catch (error) {
 		res.status(500).json({
-			message: infomsg.errorPostingMoment,
+			message: infomsg.errorPosting,
 			error: error.message 
 		});
 	}

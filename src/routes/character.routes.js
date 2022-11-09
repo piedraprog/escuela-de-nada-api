@@ -1,15 +1,18 @@
 import {Router} from 'express';
+import { postCharacters, listCharacters, listCharBykey, deleteCharacter} from '@controllers/character.controller';
+import { tokenValidation } from '@middleware/jwtValidation';
+
 
 const characterRouter = Router();
 
 
-// characterRouter.get('/Moment/List', momentctrl.ListAllMoment);
-// characterRouter.get('/Moment/List/:id',momentctrl.ListOneMoment);
+characterRouter.get('/list', listCharacters);
+characterRouter.get('/listbykey',listCharBykey);
 
 
-// characterRouter.post('/Moment/Add', tokenValidation, momentctrl.PostMoment);
+characterRouter.post('/add', tokenValidation, postCharacters);
 
 
-// characterRouter.delete('/Moment/Delete/:id', momentctrl.DeleteMoment);
+characterRouter.delete('/delete', deleteCharacter);
 
 export default characterRouter;

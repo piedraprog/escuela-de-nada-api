@@ -1,9 +1,8 @@
 export const infomsg = {
 	errorDeleting :'something goes wrong deleting the data',
-	errorFetchingMomentList: 'something goes wrong fetching moments',
+	errorFetching: 'something goes wrong fetching data',
 	errorFetchingOneMomentById: 'something goes wrong fetching the data',
-	errorFetchingMomentsByData: '',
-	errorPostingMoment: 'something goes wrong posting the data',
+	errorPosting: 'something goes wrong posting the data',
 	errorKeyMissing: 'fetch Key is missing, consult the documentation',
 	errorInvalidKey: 'Invalid key on request body, consult documentation',
 	

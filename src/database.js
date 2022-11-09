@@ -13,8 +13,10 @@ const env = 'database.js';
 			useCreateIndex: true
 		});
 		logger.info({message:`database is connect to: ${db.connection.name}`, file: env});
+		
 	} catch (error) {
 		logger.error(error);
 	}
 	
 })();
+
