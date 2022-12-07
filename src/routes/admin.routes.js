@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { createAdmin  } from '@controllers/auth.controller';
+import { createAdmin  } from '../controllers/auth.controller';
 // import { tokenValidation } from '@middleware/jwtValidation';
 
 const adminRouter = Router();

@@ -1,5 +1,5 @@
 import {Router} from 'express';
-import { postEpisodes, listEpisodes, listEpByKey, deleteEpisodes} from '@controllers/episode.controller';
+import { postEpisodes, listEpisodes, listEpByKey, deleteEpisodes} from '../controllers/episode.controller';
 // import { tokenValidation } from '@middleware/jwtValidation';
 
 

@@ -1,6 +1,6 @@
-import bestMoments from '@models/bestMoments';
-import { getPagination } from '@libs/getPagination';
-import { infomsg } from '@libs/messages';
+import bestMoments from '../models/bestMoments';
+import { getPagination } from '../libs/getPagination';
+import { infomsg } from '../libs/messages';
 
 
 //LIST

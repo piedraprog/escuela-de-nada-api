@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import config from '@config';
-import { logger } from '@logger';
+import config from './config';
+import { logger } from './libs/logger';
 
 const env = 'database.js';
 

@@ -17,7 +17,6 @@
     "express": "^4.17.1",
     "express-winston": "^4.2.0",
     "jsonwebtoken": "^8.5.1",
-    "module-alias": "^2.2.2",
     "mongoose": "^5.11.8",
     "mongoose-paginate-v2": "^1.3.13",
     "mongoose-sequence": "^5.3.1",
@@ -30,18 +29,7 @@
     "@babel/node": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",
     "@babel/preset-env": "^7.12.10",
-    "eslint": "^8.26.0",
+    "eslint": "^8.27.0",
     "nodemon": "^2.0.6"
-  },
-  "_moduleAliases": {
-    "@root": ".",
-    "@routes": "src/routes",
-    "@libs": "src/libs",
-    "@logger": "src/libs/logger",
-    "@controllers": "src/controllers",
-    "@middleware": "src/middleware",
-    "@models": "src/models",
-    "@config": "src/config.js",
-    "@morgan": "src/middleware/morgan.middleware.js"
   }
 }

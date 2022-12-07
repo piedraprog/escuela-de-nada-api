@@ -1,7 +1,7 @@
 import {Router} from 'express';
-import { listAllMoment, listByKey, postMoment, deleteByUser } from '@controllers/moments.controller';
+import { listAllMoment, listByKey, postMoment, deleteByUser } from '../controllers/moments.controller';
 // import * as characterctrl from '../controllers/character.controller';
-import { tokenValidation } from '@middleware/jwtValidation';
+import { tokenValidation } from '../middleware/jwtValidation';
 
 
 const momentRouter = Router();

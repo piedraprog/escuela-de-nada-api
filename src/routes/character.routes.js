@@ -1,12 +1,12 @@
 import {Router} from 'express';
-import { postCharacters, listCharacters, listCharBykey, deleteCharacter} from '@controllers/character.controller';
-import { tokenValidation } from '@middleware/jwtValidation';
+import { postCharacters, listCharacters, listCharBykey, deleteCharacter} from '../controllers/character.controller';
+import { tokenValidation } from '../middleware/jwtValidation';
 
 
 const characterRouter = Router();
 
 
-characterRouter.get('/list', listCharacters);
+characterRouter.get('/', listCharacters);
 characterRouter.get('/listbykey',listCharBykey);
 
 

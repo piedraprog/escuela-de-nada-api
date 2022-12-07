@@ -1,7 +1,7 @@
 import { buildDevLog } from './dev.logger';
 import { buildProdLogger } from './prod.logger'; 
 
-import config from '@config';
+import config from '../../config';
 
 let newLogger;
 

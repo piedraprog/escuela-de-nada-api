@@ -1,5 +1,5 @@
-import adminUser from '@models/admin';
-import { logger } from '@logger';
+import adminUser from '../models/admin';
+import { logger } from '../libs/logger';
 
 
 export const createAdmin = async(req, res) => {

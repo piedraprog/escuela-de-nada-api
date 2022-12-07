@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
-import config from '@config';
-import { verifyAdmin } from '@controllers/auth.controller';
-import { infomsg } from '@libs/messages';
+import config from '../config';
+import { verifyAdmin } from '../controllers/auth.controller';
+import { infomsg } from '../libs/messages';
 
 export const tokenValidation = (req, res, next) => {
 

@@ -1,6 +1,6 @@
-import character from '@models/characters';
-import { infomsg } from '@libs/messages';
-import { getPagination } from '@libs/getPagination';
+import character from '../models/characters';
+import { infomsg } from '../libs/messages';
+import { getPagination } from '../libs/getPagination';
 
 
 export const listCharacters = async(req, res) =>{
@@ -12,8 +12,8 @@ export const listCharacters = async(req, res) =>{
 
 		res.status(200).json({
 			info: {
-				totalItems: ShowCharacters.totalDocs,
-				totalPages: ShowCharacters.totalPages,
+				count: ShowCharacters.totalDocs,
+				pages: ShowCharacters.totalPages,
 				currentPage: ShowCharacters.page - 1,
 				// nextPage: 'coming soon',
 				// prevPage: 'coming soon'

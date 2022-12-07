@@ -1,6 +1,6 @@
-import episode from '@models/episode';
-import { infomsg } from '@libs/messages';
-import { getPagination } from '@libs/getPagination';
+import episode from '../models/episode';
+import { infomsg } from '../libs/messages';
+import { getPagination } from '../libs/getPagination';
 
 export const listEpisodes = async(req,res) => {
 	try {
