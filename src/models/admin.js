@@ -7,7 +7,7 @@ const adminUser =  new Schema({
 		trim: true,
 		unique: true
 	},
-	jwt:{
+	allowedHost:{
 		type: String,
 		required: true,
 		trim: true,

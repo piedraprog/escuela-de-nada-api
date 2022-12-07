@@ -11,6 +11,7 @@ export const infomsg = {
 	userNotFound: 'User not found or does not exist',
 	contentEmpty: 'Content can not be empty',
 	
+	unauthorized: 'without authorization to make this request, please contact support to resolve this issue',
 	
 	successRegistering: 'Registered successfully',
 	successDeleting: 'Delete successfully',
