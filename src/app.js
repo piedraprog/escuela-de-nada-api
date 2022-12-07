@@ -31,6 +31,9 @@ app.get('/', (req, res) => {
 
 app.get('/api', (req, res) => {
 	res.status(200).json({
+		docs: {
+			url: ''
+		},
 		character:{
 			baseUrl:`${config.baseUrl}/api/character`
 		},
