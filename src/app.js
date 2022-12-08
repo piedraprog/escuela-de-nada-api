@@ -31,14 +31,11 @@ app.get('/', (req, res) => {
 
 app.get('/api', (req, res) => {
 	res.status(200).json({
-		docs: {
-			url: ''
-		},
-		character:{
-			baseUrl:`${config.baseUrl}/api/character`
-		},
-		bestMoment:{
+		moments:{
 			baseUrl:`${config.baseUrl}/api/moments`
+		},
+		characters:{
+			baseUrl:`${config.baseUrl}/api/character`
 		},
 		episodes:{
 			baseUrl:`${config.baseUrl}/api/episodes`
