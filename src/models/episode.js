@@ -6,13 +6,13 @@ const Episode =  new Schema({
 	id:{
 		type: Number,
 	},
-	name:{
+	title:{
 		type: String,
 		required: true,
 		trim: true,
 		unique: true
 	},
-	yearPublished: {
+	published: {
 		type: Number,
 		required: true
 	},

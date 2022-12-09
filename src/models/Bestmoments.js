@@ -28,7 +28,7 @@ const bestMoments = new Schema({
 		trim: true
 	} ,
 	tags:{
-		type: String, 
+		type: [String], 
 		required: true,
 		trim: true
 	},

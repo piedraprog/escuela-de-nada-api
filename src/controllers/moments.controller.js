@@ -6,7 +6,7 @@ import { infomsg } from '../libs/messages';
 //LIST
 export const listAllMoment = async (req, res) => {
 	try {
-		const { size, page } = req.query;
+		const { size, page } = Object.entries(req.body).length === 0 ? req.query : req.body;
 		const { limit, offset } = getPagination(size, page);
 		
 		const ShowMoments = await bestMoments.paginate({}, { offset, limit });
@@ -19,7 +19,21 @@ export const listAllMoment = async (req, res) => {
 				// nextPage: 'coming soon',
 				// prevPage: 'coming soon'
 			},
-			results: ShowMoments.docs
+			results: ShowMoments.docs.map(result =>{
+
+				const {title, capName, capNum, minStart, minEnd, tags, postedBy, createdAt} = result;
+
+				return {
+					title,
+					capName,
+					capNum, 
+					minStart, 
+					minEnd, 
+					tags, 
+					postedBy, 
+					createdAt
+				};
+			})
 		});
 
 	} catch (error) {
@@ -31,11 +45,11 @@ export const listAllMoment = async (req, res) => {
 
 
 export const listByKey = async (req, res) => {
-
+	
 	try {
-		let { size, page, key, param } = req.body;
-		const { limit, offset } = getPagination(size, page);
 		let condition;
+		let { size, page, key, param } = Object.entries(req.body).length === 0 ? req.query : req.body;
+		const { limit, offset } = getPagination(size, page);
 
 		if(!key) return  res.status(400).send({error: infomsg.contentEmpty});
 

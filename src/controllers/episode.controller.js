@@ -4,7 +4,7 @@ import { getPagination } from '../libs/getPagination';
 
 export const listEpisodes = async(req,res) => {
 	try {
-		const { size, page } = req.query;
+		const { size, page } = Object.entries(req.body).length === 0 ? req.query : req.body;
 		const { limit, offset } = getPagination(size, page);
 		
 		const showEpisodes = await episode.paginate({}, { offset, limit });
@@ -30,7 +30,7 @@ export const listEpisodes = async(req,res) => {
 
 export const listEpByKey = async(req,res) => {
 	try {
-		let { size, page, key, param } = req.body;
+		let { size, page, key, param } = Object.entries(req.body).length === 0 ? req.query : req.body;
 		const { limit, offset } = getPagination(size, page);
 		let condition;
 
@@ -46,7 +46,7 @@ export const listEpByKey = async(req,res) => {
 		case 'platform':
 			condition = {platform: {$regex : new RegExp(param), $options:'i'},};
 			break;
-		case 'yearPublished':
+		case 'published':
 			condition = {yearPublished: param};
 			break;
 		default:

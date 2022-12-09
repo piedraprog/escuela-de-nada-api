@@ -22,7 +22,7 @@ const Character =  new Schema({
 		required:true,
 		trim:true
 	},
-	epAparition:{
+	apparition:{
 		type:[Number],
 		required:true,
 		trim:true

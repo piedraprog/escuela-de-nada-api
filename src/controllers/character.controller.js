@@ -4,8 +4,9 @@ import { getPagination } from '../libs/getPagination';
 
 
 export const listCharacters = async(req, res) =>{
+
 	try {
-		const { size, page } = req.query;
+		const { size, page } = Object.entries(req.body).length === 0 ? req.query : req.body;
 		const { limit, offset } = getPagination(size, page);
 		
 		const ShowCharacters = await character.paginate({}, { offset, limit });
@@ -31,7 +32,7 @@ export const listCharacters = async(req, res) =>{
 export const listCharBykey = async(req, res) => {
 	try {
 		let condition;
-		let { size, page, key, param } = req.body;
+		let { size, page, key, param } = Object.entries(req.body).length === 0 ? req.query : req.body;
 		const { limit, offset } = getPagination(size, page);
 
 		if(!key) return  res.status(400).send({error: infomsg.contentEmpty});
