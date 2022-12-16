@@ -3,7 +3,7 @@ import mongoosePaginate from 'mongoose-paginate-v2';
 
 
 const Episode =  new Schema({
-	id:{
+	epNumber:{
 		type: Number,
 	},
 	title:{

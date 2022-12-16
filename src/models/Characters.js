@@ -18,14 +18,9 @@ const Character =  new Schema({
 		required: true
 	},
 	bornEp:{
-		type:Number,
+		type: Schema.ObjectId,
+		ref: 'episode',
 		required:true,
-		trim:true
-	},
-	apparition:{
-		type:[Number],
-		required:true,
-		trim:true
 	},
 	createBy: {
 		type: String,

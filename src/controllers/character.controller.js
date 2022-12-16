@@ -1,7 +1,7 @@
 import character from '../models/characters';
 import { infomsg } from '../libs/messages';
 import { getPagination } from '../libs/getPagination';
-
+import { logger } from '../libs/logger';
 
 export const listCharacters = async(req, res) =>{
 
@@ -9,7 +9,7 @@ export const listCharacters = async(req, res) =>{
 		const { size, page } = Object.entries(req.body).length === 0 ? req.query : req.body;
 		const { limit, offset } = getPagination(size, page);
 		
-		const ShowCharacters = await character.paginate({}, { offset, limit });
+		const ShowCharacters = await character.paginate({}, { offset, limit, populate: 'bornEp' });
 
 		res.status(200).json({
 			info: {
@@ -19,10 +19,30 @@ export const listCharacters = async(req, res) =>{
 				// nextPage: 'coming soon',
 				// prevPage: 'coming soon'
 			},
-			results: ShowCharacters.docs
+			results: ShowCharacters.docs.map(result=>{
+
+				const {_id , name, bornEp, status, createBy} = result;
+				const { epNumber, title, published, location, platform, category} = bornEp;
+
+				return {
+					id: _id,
+					name,
+					status,
+					createBy,
+					bornEp: {
+						epNumber, 
+						title, 
+						published, 
+						location, 
+						platform, 
+						category
+					}
+				};
+			})
 		});
 
 	} catch (error) {
+		logger.error(error);
 		res.status(500).json({
 			message: error.message || infomsg.errorFetchingMomentList,
 		});
@@ -48,7 +68,7 @@ export const listCharBykey = async(req, res) => {
 			return res.status(400).send({error: infomsg.errorInvalidKey});
 		}
 
-		const ShowCharacters = await character.paginate(condition, { offset, limit });
+		const ShowCharacters = await character.paginate(condition, { offset, limit, populate: 'bornEp' });
 		
 		
 		res.status(200).json({
@@ -57,10 +77,30 @@ export const listCharBykey = async(req, res) => {
 				totalPages: ShowCharacters.totalPages,
 				currentPage: ShowCharacters.page - 1
 			},
-			results: ShowCharacters.docs,
+			results: ShowCharacters.docs.map(result=>{
+
+				const {_id , name, bornEp, status, createBy} = result;
+				const { epNumber, title, published, location, platform, category} = bornEp;
+
+				return {
+					id: _id,
+					name,
+					status,
+					createBy,
+					bornEp: {
+						epNumber, 
+						title, 
+						published, 
+						location, 
+						platform, 
+						category
+					}
+				};
+			})
 		});
 
 	} catch (error) {
+		logger.error(error);
 		res.status(500).json({
 			message: error.message || infomsg.errorFetching,
 		});
@@ -72,13 +112,12 @@ export const postCharacters = async(req, res) =>{
 
 	if (!req.body) return res.status(400).send({ message: infomsg.contentEmpty});
 
-	const {  name, bornEp, status, createBy, epAparition} = req.body;
+	const {  name, bornEp, status, createBy} = req.body;
 	
 	try {
 		const newCharacter = new character({
 			name: name,
 			bornEp: bornEp,
-			epAparition:epAparition,
 			status: status,
 			createBy: createBy
 		});
@@ -91,6 +130,7 @@ export const postCharacters = async(req, res) =>{
 			}
 		});
 	} catch (error) {
+		logger.error(error);
 		res.status(500).json({
 			message: infomsg.errorPosting,
 			error: error.message 
@@ -122,7 +162,7 @@ export const deleteCharacter = async(req, res) => {
 		});
 
 	} catch (error) {
-
+		logger.error(error);
 		res.status(500).json({
 			message: infomsg.errorDeleting,
 			error: error.message ,

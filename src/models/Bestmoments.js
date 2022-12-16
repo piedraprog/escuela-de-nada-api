@@ -7,15 +7,10 @@ const bestMoments = new Schema({
 		type: String, 
 		required: true,
 	},
-	capName:{
-		type: String, 
-		required: true,
-		trim: true
-	} ,
-	capNum:{
-		type: Number, 
-		required: true,
-		trim: true
+	episode:{
+		type: Schema.ObjectId, 
+		ref: 'episode',
+		required: true
 	},
 	minStart:{
 		type: Number, 

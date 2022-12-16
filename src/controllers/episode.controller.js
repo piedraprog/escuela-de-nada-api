@@ -1,6 +1,7 @@
 import episode from '../models/episode';
 import { infomsg } from '../libs/messages';
 import { getPagination } from '../libs/getPagination';
+import { logger }  from '../libs/logger';
 
 export const listEpisodes = async(req,res) => {
 	try {
@@ -21,6 +22,7 @@ export const listEpisodes = async(req,res) => {
 		});
 
 	} catch (error) {
+		logger.error(error);
 		res.status(500).json({
 			message: error.message || infomsg.errorFetchingMomentList,
 		});
@@ -66,6 +68,7 @@ export const listEpByKey = async(req,res) => {
 		});
 
 	} catch (error) {
+		logger.error(error);
 		res.status(500).json({
 			message: error.message || infomsg.errorFetchingMomentList,
 		});
@@ -74,15 +77,15 @@ export const listEpByKey = async(req,res) => {
 
 
 export const postEpisodes = async(req,res) => {
-	if (!req.body?.name) return res.status(400).send({ message: infomsg.contentEmpty});
+	if (!req.body?.title) return res.status(400).send({ message: infomsg.contentEmpty});
 
-	const { epNumber, name, yearPublished, platform, category,location } = req.body;
-	
+	const { epNumber, title, published, platform, category,location } = req.body;
+
 	try {
 		const newEpisode = new episode({
-			id: epNumber,
-			name: name,
-			yearPublished: yearPublished,
+			epNumber: epNumber,
+			title: title,
+			published: published,
 			location: location,
 			platform: platform,
 			category: category
@@ -96,6 +99,7 @@ export const postEpisodes = async(req,res) => {
 			}
 		});
 	} catch (error) {
+		logger.error(error);
 		res.status(500).json({
 			message: infomsg.errorPosting,
 			error: error.message 
@@ -106,8 +110,6 @@ export const postEpisodes = async(req,res) => {
 
 export const deleteEpisodes = async(req,res) => {
 	try {
-
-
 		if(!req.body?.username) return res.status(400).json({
 			error: infomsg.contentEmpty
 		});
@@ -129,7 +131,7 @@ export const deleteEpisodes = async(req,res) => {
 		});
 
 	} catch (error) {
-
+		logger.error(error);
 		res.status(500).json({
 			message: infomsg.errorDeleting,
 			error: error.message ,
