@@ -16,14 +16,9 @@ const bestMoments = new Schema({
 		type: Number, 
 		required: true,
 		trim: true
-	} ,
+	},
 	minEnd:{
 		type: Number, 
-		required: true,
-		trim: true
-	} ,
-	tags:{
-		type: [String], 
 		required: true,
 		trim: true
 	},

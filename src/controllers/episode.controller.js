@@ -43,7 +43,7 @@ export const listEpByKey = async(req,res) => {
 			condition = {location: {$regex : new RegExp(param), $options:'i'},};
 			break;
 		case 'category':
-			condition = {cateogry: {$regex : new RegExp(param), $options:'i'},};
+			condition = {category: {$regex : new RegExp(param), $options:'i'},};
 			break;
 		case 'platform':
 			condition = {platform: {$regex : new RegExp(param), $options:'i'},};
