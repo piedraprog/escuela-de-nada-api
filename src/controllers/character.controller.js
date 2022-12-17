@@ -13,8 +13,8 @@ export const listCharacters = async(req, res) =>{
 
 		res.status(200).json({
 			info: {
-				count: ShowCharacters.totalDocs,
-				pages: ShowCharacters.totalPages,
+				totalItems: ShowCharacters.totalDocs,
+				totalPages: ShowCharacters.totalPages,
 				currentPage: ShowCharacters.page - 1,
 				// nextPage: 'coming soon',
 				// prevPage: 'coming soon'

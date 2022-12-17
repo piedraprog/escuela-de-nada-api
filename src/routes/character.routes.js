@@ -6,7 +6,7 @@ import { tokenValidation } from '../middleware/jwtValidation';
 const characterRouter = Router();
 
 
-characterRouter.get('', listCharacters);
+characterRouter.get('/list', listCharacters);
 characterRouter.get('/listby',listCharBykey);
 
 
