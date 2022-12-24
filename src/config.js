@@ -8,6 +8,6 @@ export default {
 	mongodbURL: process.env.MONGODB_URI || 'mongodb://Localhost/EDN',
 	jwtKey: process.env.JWT_PASS,
 	env: process.env.ENVIRONMENT, 
-	port: process.env.PORT,
+	port: process.env.PORT | 3000,
 	host: process.env.HOST
 };
