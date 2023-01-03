@@ -59,10 +59,11 @@ export const listEpByKey = async(req,res) => {
 		
 		
 		res.status(200).json({
+			episode,
 			info: {
-				totalItems: episode.totalDocs,
-				totalPages: episode.totalPages,
-				currentPage: episode.page - 1
+				totalItems: showEpisode.totalDocs,
+				totalPages: showEpisode.totalPages,
+				currentPage: showEpisode.page - 1
 			},
 			results: showEpisode.docs,
 		});

@@ -44,7 +44,7 @@ app.get('/api', (req, res) => {
 });
 
 app.get('/docs', (req, res) => {
-	res.redirect('http://localhost:4200/home');
+	res.redirect(config.docsUrl);
 });
 
 //FUNCTIONAL ROUTES
