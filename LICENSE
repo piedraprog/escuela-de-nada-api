@@ -26,3 +26,34 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+
+## BSD 3-Clause License traduction
+
+Copyright (c) 2023, Jose Piedra
+
+Se permite la redistribución y el uso en forma de código fuente y binaria, con o sin
+modificación, siempre que se cumplan las siguientes condiciones:
+
+1. 1. Las redistribuciones del código fuente deben conservar el aviso de copyright anterior, esta lista de condiciones y la siguiente cláusula de exención de responsabilidad.
+   lista de condiciones y el siguiente descargo de responsabilidad.
+
+2. Las redistribuciones en formato binario deben reproducir el aviso de copyright anterior
+   esta lista de condiciones y la siguiente cláusula de exención de responsabilidad en la documentación
+   y/u otros materiales proporcionados con la distribución.
+
+3. Ni el nombre del titular de los derechos de autor ni los nombres de sus
+   colaboradores pueden utilizarse para promocionar productos derivados de este
+   este software sin autorización previa por escrito.
+
+ESTE SOFTWARE ES PROPORCIONADO POR LOS TITULARES DE LOS DERECHOS DE AUTOR Y LOS COLABORADORES "TAL CUAL"
+Y CUALQUIER GARANTÍA EXPRESA O IMPLÍCITA, INCLUIDAS, ENTRE OTRAS, LAS
+GARANTÍAS IMPLÍCITAS DE COMERCIABILIDAD E IDONEIDAD PARA UN FIN DETERMINADO.
+SE DENIEGA. EN NINGÚN CASO EL TITULAR DE LOS DERECHOS DE AUTOR O LOS COLABORADORES SERÁN RESPONSABLES
+POR CUALQUIER DAÑO DIRECTO, INDIRECTO, INCIDENTAL, ESPECIAL, EJEMPLAR O CONSECUENTE
+(INCLUIDOS, ENTRE OTROS, LA ADQUISICIÓN DE BIENES O SERVICIOS DE SUSTITUCIÓN
+SERVICIOS; PÉRDIDA DE USO, DATOS O BENEFICIOS; O INTERRUPCIÓN DE LA ACTIVIDAD EMPRESARIAL), SIN
+CAUSADOS Y EN CUALQUIER TEORÍA DE RESPONSABILIDAD, YA SEA POR CONTRATO, RESPONSABILIDAD ESTRICTA
+O EXTRACONTRACTUAL (INCLUIDA LA NEGLIGENCIA O DE OTRO TIPO) QUE SURJA DE CUALQUIER MODO DEL USO
+DE ESTE SOFTWARE, AUN CUANDO SE HAYA ADVERTIDO DE LA POSIBILIDAD DE TALES DAÑOS.
+

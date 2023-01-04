@@ -1,8 +1,8 @@
 {
   "name": "api_rest_edn",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.0 pre-release",
+  "description": "This is a RESTful API based on the podcast Escuela de Nada",
+  "main": "./src/index.js",
   "scripts": {
     "dev": "nodemon src/index.js --exec babel-node",
     "build": "babel src --out-dir dist",
