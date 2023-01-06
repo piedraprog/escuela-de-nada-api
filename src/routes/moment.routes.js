@@ -1,6 +1,5 @@
 import {Router} from 'express';
-import { listAllMoment, listByKey, postMoment, deleteByUser } from '../controllers/moments.controller';
-// import * as characterctrl from '../controllers/character.controller';
+import { listAllMoment, listByKey, postMoment } from '../controllers/moments.controller';
 import { tokenValidation } from '../middleware/jwtValidation';
 
 
@@ -11,8 +10,5 @@ momentRouter.get('/listby', listByKey);
 
 
 momentRouter.post('/add', tokenValidation, postMoment);
-
-
-momentRouter.delete('/deletebyuser',tokenValidation, deleteByUser );
 
 export default momentRouter;

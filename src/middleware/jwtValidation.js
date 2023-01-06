@@ -5,7 +5,7 @@ import { infomsg } from '../libs/messages';
 
 export const tokenValidation = (req, res, next) => {
 
-	const token = req.body.key;
+	const token = req.headers['token'];
 	if(!token){
 		return res.status(401).json({
 			message: infomsg.tokenNotFound
@@ -22,7 +22,7 @@ export const tokenValidation = (req, res, next) => {
 			}
 
 			if(await verifyAdmin(decode.name)) {
-				req.body = req.body.data;
+				req.body;
 				next();
 			} else {
 				return res.status(401).json({

@@ -1,10 +1,11 @@
-import {Router} from 'express';
-import { createAdmin  } from '../controllers/auth.controller';
-// import { tokenValidation } from '@middleware/jwtValidation';
+// import {Router} from 'express';
+// import { createAdmin  } from '../controllers/auth.controller';
+// // import { tokenValidation } from '@middleware/jwtValidation';
 
-const adminRouter = Router();
+// const adminRouter = Router();
 
-adminRouter.post('/register', createAdmin);
+// adminRouter.post('/register', createAdmin);
 
 
-export default adminRouter;
+// export default adminRouter;
+

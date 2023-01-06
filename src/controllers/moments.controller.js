@@ -146,37 +146,37 @@ export const postMoment = async (req, res) => {
 	}
 };
 
-// DELETE
-export const deleteByUser = async (req, res) => {
-	try {
+// // DELETE
+// export const deleteByUser = async (req, res) => {
+// 	try {
 
 
-		if(!req.body?.username) return res.status(400).json({
-			error: infomsg.contentEmpty
-		});
+// 		if(!req.body?.username) return res.status(400).json({
+// 			error: infomsg.contentEmpty
+// 		});
 		
-		const { username } = req.body;
-		const exist = await bestMoments.findOne({postedBy: username});
+// 		const { username } = req.body;
+// 		const exist = await bestMoments.findOne({postedBy: username});
 
-		if(!exist) return res.status(404).json({
-			error: infomsg.userNotFound
-		});
+// 		if(!exist) return res.status(404).json({
+// 			error: infomsg.userNotFound
+// 		});
 
 
-		const result = await bestMoments.deleteMany({ postedBy: username});
-		res.status(200).json({
-			info: {
-				opResult: infomsg.successDeleting,
-				itemsDeleted: result.deletedCount
-			}
-		});
+// 		const result = await bestMoments.deleteMany({ postedBy: username});
+// 		res.status(200).json({
+// 			info: {
+// 				opResult: infomsg.successDeleting,
+// 				itemsDeleted: result.deletedCount
+// 			}
+// 		});
 
-	} catch (error) {
-		logger.error(error);
-		res.status(500).json({
-			message: infomsg.errorDeleting,
-			error: error.message ,
-		});
+// 	} catch (error) {
+// 		logger.error(error);
+// 		res.status(500).json({
+// 			message: infomsg.errorDeleting,
+// 			error: error.message ,
+// 		});
 
-	}
-};
+// 	}
+// };

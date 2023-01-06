@@ -78,7 +78,7 @@ export const listEpByKey = async(req,res) => {
 
 
 export const postEpisodes = async(req,res) => {
-	if (!req.body?.title) return res.status(400).send({ message: infomsg.contentEmpty});
+	if (!req.body.title || !req.body.epNumber) return res.status(400).send({ error: infomsg.contentEmpty });
 
 	const { epNumber, title, published, platform, category,location } = req.body;
 
@@ -107,38 +107,4 @@ export const postEpisodes = async(req,res) => {
 		});
 	}
 };
-
-
-export const deleteEpisodes = async(req,res) => {
-	try {
-		if(!req.body?.username) return res.status(400).json({
-			error: infomsg.contentEmpty
-		});
-		
-		const { username } = req.body;
-		const exist = await episode.findOne({postedBy: username});
-
-		if(!exist) return res.status(404).json({
-			error: infomsg.userNotFound
-		});
-
-
-		const result = await episode.deleteMany({ postedBy: username});
-		res.status(200).json({
-			info: {
-				opResult: infomsg.successDeleting,
-				itemsDeleted: result.deletedCount
-			}
-		});
-
-	} catch (error) {
-		logger.error(error);
-		res.status(500).json({
-			message: infomsg.errorDeleting,
-			error: error.message ,
-		});
-
-	}
-};
-
 

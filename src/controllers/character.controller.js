@@ -138,35 +138,3 @@ export const postCharacters = async(req, res) =>{
 	}
 };
 
-export const deleteCharacter = async(req, res) => {
-	try {
-		if(!req.body?.createBy) return res.status(400).json({
-			error: infomsg.contentEmpty
-		});
-		
-		const { createBy } = req.body;
-		// console.log(createBy)
-		const exist = await character.findOne({createBy: createBy});
-
-		if(!exist) return res.status(404).json({
-			error: infomsg.userNotFound
-		});
-
-
-		const result = await character.deleteMany({ createBy: createBy});
-		res.status(200).json({
-			info: {
-				opResult: infomsg.successDeleting,
-				itemsDeleted: result.deletedCount
-			}
-		});
-
-	} catch (error) {
-		logger.error(error);
-		res.status(500).json({
-			message: infomsg.errorDeleting,
-			error: error.message ,
-		});
-
-	}
-};
