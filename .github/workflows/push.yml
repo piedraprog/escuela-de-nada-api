@@ -34,4 +34,4 @@ jobs:
             export NVM_DIR=~/.nvm
             source ~/.nvm/nvm.sh 
             npm run build
-            # pm2 reload 0
+            pm2 reload 0
