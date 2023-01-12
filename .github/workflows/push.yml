@@ -27,13 +27,13 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-        run: echo "host $host"
+        run: echo  $host
 
-      # - name: Build
-      #   uses: appleboy/ssh-action@v0.1.7
-      #   with: 
-      #     host: ${{ secrets.HOST }}
-      #     username: ${{ secrets.USERNAME }}
-      #     password: ${{ secrets.PASSWORD }}
-      #     script: |
-      #       pm2 stop ednapi
+      - name: Build
+        uses: appleboy/ssh-action@v0.1.2
+        with: 
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: |
+            pm2 stop ednapi
