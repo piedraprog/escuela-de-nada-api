@@ -31,5 +31,7 @@ jobs:
             cd ${{ secrets.PATH }}
             git checkout .
             git pull
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh 
             npm run build
             # pm2 reload 0
