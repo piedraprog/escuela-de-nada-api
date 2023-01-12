@@ -13,13 +13,12 @@ jobs:
         with:
           fetch-depth: 0
       - name: push to server
-        uses: appleboy/ssh-action@master
+        uses: jjst/action-digitalocean-deploy-app@v2
         with: 
-          host: ${{secrets.HOST}}
-          username: ${{secrets.USER}}
-          key: ${{secrets.KEY}}
-          script: | 
-            cd ${{secrets.path}}
+          token: ${{secrets.TOKEN}}
+          app-id: edn-api
+          script: |
+            cd ${{secrets.PATH}}
             git checkout .
             git pull
             npm run build
