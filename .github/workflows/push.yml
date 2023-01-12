@@ -13,7 +13,7 @@ jobs:
         with:
           fetch-depth: 0
       - name: ssh con 
-        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
+        uses: cross-the-world/ssh-pipeline@master
         with: 
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USER }}
