@@ -22,11 +22,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Build
-        uses: appleboy/ssh-action@v0.1.7
-        with: 
+      - name: prueba
+        env: 
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          script: |
-            pm2 stop ednapi
+        run: echo "host $host"
+
+      # - name: Build
+      #   uses: appleboy/ssh-action@v0.1.7
+      #   with: 
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     password: ${{ secrets.PASSWORD }}
+      #     script: |
+      #       pm2 stop ednapi
