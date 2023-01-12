@@ -5,8 +5,6 @@ import cors from 'cors';
 import ListRoutes from './routes/list.routes';
 import config from './config';
 import { accessValidation } from './middleware/access.middleware';
-import { logger } from './libs/logger';
-
 
 const app = express();
 

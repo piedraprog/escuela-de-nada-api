@@ -1,0 +1,37 @@
+name: Deploy pipeline
+
+on: 
+  push: 
+    branches:
+      - "master"
+
+jobs: 
+  deploy: 
+    runs-on: ubuntu-20.04
+    steps:
+      # - name: cancel redundant build
+      #   uses: styfle/cancel-workflow-action0.9.1
+      #   with:
+      #     access_token: ${{ github.token }}
+
+
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 0
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 0
+      - name: Build
+        uses: appleboy/ssh-action@v0.1.2
+        with: 
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.KEY }}
+          script: |
+            cd ${{ secrets.PATH }}
+            git checkout .
+            git pull
+            export NVM_DIR=~/.nvm
+            source ~/.nvm/nvm.sh 
+            npm run build
+            pm2 reload 0
