@@ -8,7 +8,7 @@ const episodeRouter = Router();
 
 episodeRouter.get('/list', listEpisodes);
 
-episodeRouter.get('/listbykey', listEpByKey);
+episodeRouter.get('/listby', listEpByKey);
 
 episodeRouter.post('/add',tokenValidation, postEpisodes);
 
