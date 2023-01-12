@@ -32,4 +32,4 @@ jobs:
             git checkout .
             git pull
             npm run build
-            pm2 reload ednapi
+            pm2 reload 0
