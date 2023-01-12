@@ -12,10 +12,13 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 0
-      - uses: jjst/action-digitalocean-deploy-app@v2
+      - name: ssh con 
+        uses: cross-the-world/ssh-scp-ssh-pipelines@latest
         with: 
-          token: ${{ secrets.TOKEN }}
-          app-id: edn-api
+          host: ${{ secrets.HOST }}
+          user: ${{ secrets.USER }}
+          pass: ${{ secrets.KEY }}
+          connect_timeout: 10s
           script: |
             cd ${{ secrets.PATH }}
             git checkout .
