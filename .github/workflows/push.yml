@@ -21,19 +21,11 @@ jobs:
       - uses: actions/checkout@v1
         with:
           fetch-depth: 0
-
-      - name: prueba
-        env: 
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USER }}
-          password: ${{ secrets.PASSWORD }}
-        run: echo  $host
-
       - name: Build
         uses: appleboy/ssh-action@v0.1.2
         with: 
           host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
+          username: ${{ secrets.USER }}
           password: ${{ secrets.KEY }}
           script: |
             pm2 stop ednapi
