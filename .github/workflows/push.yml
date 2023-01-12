@@ -1,0 +1,26 @@
+name: Deploy pipeline
+
+on: 
+  push: 
+    branches:
+      - "master"
+
+jobs: 
+  deploy: 
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 0
+      - name: push to server
+        uses: appleboy/ssh-action@master
+        with: 
+          host: ${{secrets.HOST}}
+          username: ${{secrets.USER}}
+          key: ${{secrets.KEY}}
+          script: | 
+            cd ${{secrets.path}}
+            git checkout .
+            git pull
+            npm run build
+            pm2 reload ednapi
