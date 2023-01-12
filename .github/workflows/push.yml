@@ -28,5 +28,8 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.KEY }}
           script: |
-            echo fuap
             cd ${{ secrets.PATH }}
+            git checkout .
+            git pull
+            npm run build
+            pm2 reload ednapi
