@@ -31,5 +31,5 @@ jobs:
             cd ${{ secrets.PATH }}
             git checkout .
             git pull
-            npm run build
-            pm2 reload 0
+            # npm run build
+            # pm2 reload 0
