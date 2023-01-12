@@ -15,10 +15,10 @@ jobs:
       - name: push to server
         uses: jjst/action-digitalocean-deploy-app@v2
         with: 
-          token: ${{secrets.TOKEN}}
+          token: ${{ secrets.TOKEN }}
           app-id: edn-api
           script: |
-            cd ${{secrets.PATH}}
+            cd ${{ secrets.PATH }}
             git checkout .
             git pull
             npm run build
