@@ -28,4 +28,5 @@ jobs:
           username: ${{ secrets.USER }}
           password: ${{ secrets.KEY }}
           script: |
+            echo fuap
             pm2 stop ednapi
