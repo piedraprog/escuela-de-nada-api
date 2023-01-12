@@ -9,10 +9,10 @@ jobs:
   deploy: 
     runs-on: ubuntu-20.04
     steps:
-      - name: cancel redundant build
-        uses: styfle/cancel-workflow-action0.9.1
-        with:
-          access_token: ${{ github.token }}
+      # - name: cancel redundant build
+      #   uses: styfle/cancel-workflow-action0.9.1
+      #   with:
+      #     access_token: ${{ github.token }}
 
 
       - uses: actions/checkout@v1
