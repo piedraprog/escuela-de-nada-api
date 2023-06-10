@@ -5,9 +5,11 @@ import { tokenValidation } from '../middleware/jwtValidation';
 
 const momentRouter = Router();
 
-momentRouter.get('/list', listAllMoment);
-momentRouter.get('/listby', listByKey);
+momentRouter.get('/', listAllMoment);
 
+momentRouter.get('/list', listAllMoment);
+
+momentRouter.get('/listby', listByKey);
 
 momentRouter.post('/add', tokenValidation, postMoment);
 
