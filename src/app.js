@@ -45,6 +45,10 @@ app.get('/docs', (req, res) => {
 	res.redirect(config.docsUrl);
 });
 
+app.use((req, res) => {
+	res.status(404).json({ error: 'URL no encontrada' });
+});
+
 //FUNCTIONAL ROUTES
 app.use('/api', ListRoutes);
 
